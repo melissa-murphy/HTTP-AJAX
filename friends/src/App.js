@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
@@ -37,9 +37,13 @@ export default class App extends Component {
           <h1>My Friend List</h1>
         </Navbar>
         <FriendList>
-          <FriendCard />
+ 
         </FriendList>
-        <Route exact path="/" component={FriendList} />
+        <Route exact path="/" component={App} />
+        <Route path="friend-list" render={props => (
+          <FriendList {...props} friends={this.state.friends} />
+        )}
+        />
         <Route
           exact
           path="/friend-card"
@@ -50,9 +54,7 @@ export default class App extends Component {
         <Route
           exact
           path="/friend-card/:id"
-          render={props => (
-            <Friend {...props} friends={this.state.friends} />
-          )}
+          render={props => <Friend {...props} friends={this.state.friends} />}
         />
       </div>
     );
