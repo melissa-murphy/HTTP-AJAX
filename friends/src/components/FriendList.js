@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-export default class MovieList extends Component {
+import FriendCard from './FriendCard';
+
+export default class FriendList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: []
+      friends: []
     };
   }
 
   componentDidMount() {
     axios
-      .get('http://localhost:5000/api/movies')
+      .get('http://localhost:5000/api/friends')
       .then(response => {
         this.setState(() => ({ friends: response.data }));
       })
@@ -26,10 +28,10 @@ export default class MovieList extends Component {
   }
 }
 
-// function FriendDetails({ friend }) {
-//   return (
-//     <Link to={`/friends/${friend.id}`}>
-//       <FriendCard friend={friend} />
-//     </Link>
-//   );
-// }
+function FriendDetails({ friend }) {
+  return (
+    <Link to={`/friends/${friend.id}`}>
+      <FriendCard friend={friend} />
+    </Link>
+  );
+}
