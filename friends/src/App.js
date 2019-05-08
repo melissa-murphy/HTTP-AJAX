@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
+import { Navbar } from 'reactstrap';
 
 import FriendList from './components/FriendList';
+import FriendCard from './components/FriendCard';
+import Friend from './components/Friend';
 
 export default class App extends Component {
   constructor() {
@@ -30,8 +33,28 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-      <Route exact path="/" component={FriendList} />
+        <Navbar>
+          <h1>My Friend List</h1>
+        </Navbar>
+        <FriendList>
+          <FriendCard />
+        </FriendList>
+        <Route exact path="/" component={FriendList} />
+        <Route
+          exact
+          path="/friend-card"
+          render={props => (
+            <FriendCard {...props} friends={this.state.friends} />
+          )}
+        />
+        <Route
+          exact
+          path="/friend-card/:id"
+          render={props => (
+            <Friend {...props} friends={this.state.friends} />
+          )}
+        />
       </div>
-    )
+    );
   }
 }
