@@ -32,6 +32,13 @@ export default class App extends Component {
     console.log('bottom cdm');
   }
 
+  postFriend = () => {
+    axios
+    .post('http://localhost:5000/friends')
+    .then(response => console.log(response))
+    .catch(error => console.log({error: error.response.message}))
+  }
+
   render() {
     return (
       <div className="App">
@@ -48,7 +55,7 @@ export default class App extends Component {
         <Route exact path="/friends:id" component={Friend} />
 
         <Container>
-          <FormSection />
+          <FormSection postFriend={this.postFriend} />
         </Container>
       </div>
     );

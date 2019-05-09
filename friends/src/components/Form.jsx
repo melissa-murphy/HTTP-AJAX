@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 class FormSection extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      friends: {
+        name: '',
+        age: '',
+        email: ''
+      }
+    }
+  }
   render() {
     return (
       <>
