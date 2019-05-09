@@ -30,17 +30,18 @@ export default class App extends Component {
       });
   }
 
+
   render() {
     return (
       <div className="App">
         <Navbar>
           <h1>My Friend List</h1>
         </Navbar>
-        <FriendList>
- 
-        </FriendList>
+        <FriendList friends={this.state.friends} />
+
+
         <Route exact path="/" component={App} />
-        <Route path="friend-list" render={props => (
+        <Route path="/friend-list" render={props => (
           <FriendList {...props} friends={this.state.friends} />
         )}
         />

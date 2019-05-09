@@ -6,7 +6,10 @@ import FriendCard from './FriendCard';
 const FriendList = props => {
   return (
     <div className="friend-list">
-      <FriendCard />
+      {props.friends.map(friend => (
+        <FriendCard friend={friend} key={friend.id} />
+
+      ))}
     </div>
   );
 };
