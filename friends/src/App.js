@@ -3,10 +3,11 @@ import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 import './App.css';
-import { Navbar } from 'reactstrap';
+import { Navbar, Container } from 'reactstrap';
 
 import FriendList from './components/FriendList';
 import Friend from './components/Friend';
+import FormSection from './components/Form';
 
 export default class App extends Component {
   constructor() {
@@ -37,6 +38,7 @@ export default class App extends Component {
         <Navbar>
           <h1>My Friend List</h1>
         </Navbar>
+
         <Route
           path="/"
           render={props => (
@@ -44,6 +46,10 @@ export default class App extends Component {
           )}
         />
         <Route exact path="/friends:id" component={Friend} />
+
+        <Container>
+          <FormSection />
+        </Container>
       </div>
     );
   }
