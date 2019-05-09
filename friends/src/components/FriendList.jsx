@@ -1,17 +1,17 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
-import FriendCard from './FriendCard';
-// import Friend from './Friend';
+import Friend from './Friend';
 
 const FriendList = props => {
+  console.log(props.friends.id);
   return (
     <>
-      <div className="friend-list">
+      <Container className="friend-list">
         {props.friends.map(friend => (
-          <FriendCard friend={friend} key={friend.id} />
+          <Friend className="friend-info" friend={friend} key={friend.id} />
         ))}
-      </div>
+      </Container>
     </>
   );
 };

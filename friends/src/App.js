@@ -6,7 +6,6 @@ import './App.css';
 import { Navbar } from 'reactstrap';
 
 import FriendList from './components/FriendList';
-import FriendCard from './components/FriendCard';
 import Friend from './components/Friend';
 
 export default class App extends Component {
@@ -18,6 +17,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    console.log('top cdm');
     axios
       .get('http://localhost:5000/friends')
       .then(response => {
@@ -28,6 +28,7 @@ export default class App extends Component {
         console.log(error);
         console.error({ error: error.response.message });
       });
+    console.log('bottom cdm');
   }
 
   render() {
@@ -36,26 +37,13 @@ export default class App extends Component {
         <Navbar>
           <h1>My Friend List</h1>
         </Navbar>
-        <FriendList friends={this.state.friends} />
-
-        <Route exact path="/" component={App} />
         <Route
-          exact
-          path="/friend-list"
+          path="/"
           render={props => (
             <FriendList {...props} friends={this.state.friends} />
           )}
         />
-        <Route
-          path="/friend-card"
-          render={props => (
-            <FriendCard {...props} friends={this.state.friends} />
-          )}
-        />
-        <Route
-          path="/friend-card/:id"
-          render={props => <Friend {...props} friends={this.state.friends} />}
-        />
+        <Route exact path="/friends:id" component={Friend} />
       </div>
     );
   }
