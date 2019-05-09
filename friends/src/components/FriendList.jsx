@@ -1,18 +1,21 @@
 import React from 'react';
-import { Container } from 'reactstrap';
 
 import Friend from './Friend';
 
 const FriendList = props => {
-  console.log(props.friends.id);
+  console.log(props.friends.length);
   return (
-    <>
-      <Container className="friend-list">
-        {props.friends.map(friend => (
-          <Friend className="friend-info" friend={friend} key={friend.id} />
-        ))}
-      </Container>
-    </>
+    <div className="friend-list">
+      {props.friends.map((friend, id) => (
+        <Friend
+          className="friend-info"
+          friend={friend}
+          key={friend.id}
+          {...friend}
+          newFriend={props.newFriend}
+        />
+      ))}
+    </div>
   );
 };
 
