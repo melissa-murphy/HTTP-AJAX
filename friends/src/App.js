@@ -29,7 +29,7 @@ export default class App extends Component {
 
   newFriend = (event, newFriend) => {
     event.preventDefault();
-    console.log(`add friend fired`)
+    console.log(`add friend fired`);
     axios
       .post(`http://localhost:5000/friends`, newFriend)
       .then(response => this.setState({ friends: response.data }))
@@ -37,6 +37,15 @@ export default class App extends Component {
       .catch(error => console.log(error));
   };
 
+  deleteFriend = target => {
+    console.log(`deleteFriend called`);
+    axios
+      .delete(`http://localhost:5000/friends/${target}`)
+      .then(res => {
+        this.setState({ friends: res.data });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -45,8 +54,8 @@ export default class App extends Component {
           <h1>My Friend List</h1>
         </Navbar>
         <Container>
-        <FriendList friends={this.state.friends} />
-        <AddFriendForm newFriend={this.newFriend} />
+          <FriendList friends={this.state.friends} deleteFriend={this.deleteFriend} />
+          <AddFriendForm newFriend={this.newFriend} />
         </Container>
       </div>
     );
