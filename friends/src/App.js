@@ -27,10 +27,11 @@ export default class App extends Component {
     console.log('bottom cdm');
   }
 
-  newFriend = (event, newFriendAdded) => {
+  newFriend = (event, newFriend) => {
     event.preventDefault();
+    console.log(`add friend fired`)
     axios
-      .post(`http://localhost:5000/friends`, newFriendAdded)
+      .post(`http://localhost:5000/friends`, newFriend)
       .then(response => this.setState({ friends: response.data }))
       .then(res => console.log(res))
       .catch(error => console.log(error));

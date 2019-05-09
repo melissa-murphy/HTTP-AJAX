@@ -25,7 +25,7 @@ export default class AddFriendForm extends Component {
   };
 
   handleSubmit = event => {
-    this.props.newFriendAdded(event, this.state.newFriend);
+    this.props.newFriend(event, this.state.newFriend);
     this.setState({
       newFriend: {
         name: '',
