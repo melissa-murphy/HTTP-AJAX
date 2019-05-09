@@ -1,12 +1,13 @@
 import React from 'react';
-import Friend from './Friend';
+// import { Link } from 'react-router-dom';
 
 const FriendCard = props => {
   return (
-    <div className="friend-card">
-      <p>I am a friend card</p>
-      <Friend />
-    </div>
+    <>
+      <div className="friend-card">
+        <h4>{props.friend.name}</h4>
+      </div>
+    </>
   );
 };
 

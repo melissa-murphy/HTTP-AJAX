@@ -30,7 +30,6 @@ export default class App extends Component {
       });
   }
 
-
   render() {
     return (
       <div className="App">
@@ -39,21 +38,21 @@ export default class App extends Component {
         </Navbar>
         <FriendList friends={this.state.friends} />
 
-
         <Route exact path="/" component={App} />
-        <Route path="/friend-list" render={props => (
-          <FriendList {...props} friends={this.state.friends} />
-        )}
-        />
         <Route
           exact
+          path="/friend-list"
+          render={props => (
+            <FriendList {...props} friends={this.state.friends} />
+          )}
+        />
+        <Route
           path="/friend-card"
           render={props => (
             <FriendCard {...props} friends={this.state.friends} />
           )}
         />
         <Route
-          exact
           path="/friend-card/:id"
           render={props => <Friend {...props} friends={this.state.friends} />}
         />
