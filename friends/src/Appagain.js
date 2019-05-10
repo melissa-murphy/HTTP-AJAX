@@ -27,27 +27,44 @@ export default class App extends Component {
       .catch(error => {
         console.log(error);
       });
-      console.log(`bottom of CDM`)
+    console.log(`bottom of CDM`);
   }
 
   // Add Friend
 
   addFriend = friend => {
-      axios
+    axios
       .post(`http://localhost:5000/friends`, friend)
       .then(response => {
-          this.setState({ friend: response.data });
-          this.props.history.push('/');
+        this.setState({ friend: response.data });
+        this.props.history.push('/');
       })
-      .catch(error => console.log(error))
-  }
-
+      .catch(error => console.log(error));
+  };
 
   // Remove Friend
 
+  removeFriend = id => {
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(response => {
+        this.setState({ friends: response.data });
+        this.props.history.push('/');
+      })
+      .catch(error => console.log(error));
+  };
+
+  /**deleteItem = id => {
+    axios
+      .delete(`http://localhost:3333/items/${id}`)
+      .then(res => {
+        this.setState({ items: res.data });
+        this.props.history.push("/item-list");
+      })
+      .catch(err => console.log(err));
+  }; */
 
   // handleAdd
-
 
   // handleRemove
 }
