@@ -29,7 +29,7 @@ export default class App extends Component {
       });
     console.log(`bottom of CDM`);
   }
- 
+
   // Add Friend (POST)
 
   addFriend = friend => {
@@ -56,12 +56,15 @@ export default class App extends Component {
 
   // handleAdd()
   handleAdd = friend => {
-      this.setState({
-          friends: [...this.state.friends, friend]
-      })
-  }
-
-
+    this.setState({
+      friends: [...this.state.friends, friend]
+    });
+  };
 
   // handleRemove()
+  handleRemove = id => {
+    this.setState({
+      friends: [...this.state.friends, id]
+    });
+  };
 }
