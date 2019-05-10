@@ -29,8 +29,8 @@ export default class App extends Component {
       });
     console.log(`bottom of CDM`);
   }
-
-  // Add Friend
+ 
+  // Add Friend (POST)
 
   addFriend = friend => {
     axios
@@ -42,7 +42,7 @@ export default class App extends Component {
       .catch(error => console.log(error));
   };
 
-  // Remove Friend
+  // Remove Friend (DELETE)
 
   removeFriend = id => {
     axios
@@ -54,17 +54,14 @@ export default class App extends Component {
       .catch(error => console.log(error));
   };
 
-  /**deleteItem = id => {
-    axios
-      .delete(`http://localhost:3333/items/${id}`)
-      .then(res => {
-        this.setState({ items: res.data });
-        this.props.history.push("/item-list");
+  // handleAdd()
+  handleAdd = friend => {
+      this.setState({
+          friends: [...this.state.friends, friend]
       })
-      .catch(err => console.log(err));
-  }; */
+  }
 
-  // handleAdd
 
-  // handleRemove
+
+  // handleRemove()
 }
