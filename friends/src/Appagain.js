@@ -32,6 +32,16 @@ export default class App extends Component {
 
   // Add Friend
 
+  addFriend = friend => {
+      axios
+      .post(`http://localhost:5000/friends`, friend)
+      .then(response => {
+          this.setState({ friend: response.data });
+          this.props.history.push('/');
+      })
+      .catch(error => console.log(error))
+  }
+
 
   // Remove Friend
 
